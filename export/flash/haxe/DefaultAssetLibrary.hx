@@ -60,8 +60,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 		
 		
 		
-		
-		
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_nokiafc22_ttf);
 		openfl.text.Font.registerFont (__ASSET__OPENFL__flixel_fonts_monsterrat_ttf);
 		
@@ -75,14 +73,10 @@ class DefaultAssetLibrary extends AssetLibrary {
 		type.set ("assets/data/data-goes-here.txt", AssetType.TEXT);
 		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
-		className.set ("assets/images/playerStraight.png", __ASSET__assets_images_playerstraight_png);
-		type.set ("assets/images/playerStraight.png", AssetType.IMAGE);
-		className.set ("assets/images/shipDown.png", __ASSET__assets_images_shipdown_png);
-		type.set ("assets/images/shipDown.png", AssetType.IMAGE);
-		className.set ("assets/images/shipStraight.png", __ASSET__assets_images_shipstraight_png);
-		type.set ("assets/images/shipStraight.png", AssetType.IMAGE);
-		className.set ("assets/images/shipUp.png", __ASSET__assets_images_shipup_png);
-		type.set ("assets/images/shipUp.png", AssetType.IMAGE);
+		className.set ("assets/images/playerBullet.png", __ASSET__assets_images_playerbullet_png);
+		type.set ("assets/images/playerBullet.png", AssetType.IMAGE);
+		className.set ("assets/images/shipFrames.png", __ASSET__assets_images_shipframes_png);
+		type.set ("assets/images/shipFrames.png", AssetType.IMAGE);
 		className.set ("assets/images/wallpaper.png", __ASSET__assets_images_wallpaper_png);
 		type.set ("assets/images/wallpaper.png", AssetType.IMAGE);
 		className.set ("assets/music/music-goes-here.txt", __ASSET__assets_music_music_goes_here_txt);
@@ -114,19 +108,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 		path.set (id, id);
 		
 		type.set (id, AssetType.TEXT);
-		id = "assets/images/playerStraight.png";
+		id = "assets/images/playerBullet.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
-		id = "assets/images/shipDown.png";
-		path.set (id, id);
-		
-		type.set (id, AssetType.IMAGE);
-		id = "assets/images/shipStraight.png";
-		path.set (id, id);
-		
-		type.set (id, AssetType.IMAGE);
-		id = "assets/images/shipUp.png";
+		id = "assets/images/shipFrames.png";
 		path.set (id, id);
 		
 		type.set (id, AssetType.IMAGE);
@@ -190,17 +176,11 @@ class DefaultAssetLibrary extends AssetLibrary {
 		className.set ("assets/images/images-go-here.txt", __ASSET__assets_images_images_go_here_txt);
 		type.set ("assets/images/images-go-here.txt", AssetType.TEXT);
 		
-		className.set ("assets/images/playerStraight.png", __ASSET__assets_images_playerstraight_png);
-		type.set ("assets/images/playerStraight.png", AssetType.IMAGE);
+		className.set ("assets/images/playerBullet.png", __ASSET__assets_images_playerbullet_png);
+		type.set ("assets/images/playerBullet.png", AssetType.IMAGE);
 		
-		className.set ("assets/images/shipDown.png", __ASSET__assets_images_shipdown_png);
-		type.set ("assets/images/shipDown.png", AssetType.IMAGE);
-		
-		className.set ("assets/images/shipStraight.png", __ASSET__assets_images_shipstraight_png);
-		type.set ("assets/images/shipStraight.png", AssetType.IMAGE);
-		
-		className.set ("assets/images/shipUp.png", __ASSET__assets_images_shipup_png);
-		type.set ("assets/images/shipUp.png", AssetType.IMAGE);
+		className.set ("assets/images/shipFrames.png", __ASSET__assets_images_shipframes_png);
+		type.set ("assets/images/shipFrames.png", AssetType.IMAGE);
 		
 		className.set ("assets/images/wallpaper.png", __ASSET__assets_images_wallpaper_png);
 		type.set ("assets/images/wallpaper.png", AssetType.IMAGE);
@@ -875,10 +855,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 @:keep @:bind #if display private #end class __ASSET__assets_data_data_goes_here_txt extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_images_images_go_here_txt extends flash.utils.ByteArray { }
-@:keep @:bind #if display private #end class __ASSET__assets_images_playerstraight_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
-@:keep @:bind #if display private #end class __ASSET__assets_images_shipdown_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
-@:keep @:bind #if display private #end class __ASSET__assets_images_shipstraight_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
-@:keep @:bind #if display private #end class __ASSET__assets_images_shipup_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_playerbullet_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
+@:keep @:bind #if display private #end class __ASSET__assets_images_shipframes_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_images_wallpaper_png extends flash.display.BitmapData { public function new () { super (0, 0, true, 0); } }
 @:keep @:bind #if display private #end class __ASSET__assets_music_music_goes_here_txt extends flash.utils.ByteArray { }
 @:keep @:bind #if display private #end class __ASSET__assets_sounds_sounds_go_here_txt extends flash.utils.ByteArray { }
@@ -891,8 +869,6 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 
 #elseif html5
-
-
 
 
 
@@ -918,10 +894,8 @@ class DefaultAssetLibrary extends AssetLibrary {
 
 @:file("assets/data/data-goes-here.txt") #if display private #end class __ASSET__assets_data_data_goes_here_txt extends lime.utils.Bytes {}
 @:file("assets/images/images-go-here.txt") #if display private #end class __ASSET__assets_images_images_go_here_txt extends lime.utils.Bytes {}
-@:image("assets/images/playerStraight.png") #if display private #end class __ASSET__assets_images_playerstraight_png extends lime.graphics.Image {}
-@:image("assets/images/shipDown.png") #if display private #end class __ASSET__assets_images_shipdown_png extends lime.graphics.Image {}
-@:image("assets/images/shipStraight.png") #if display private #end class __ASSET__assets_images_shipstraight_png extends lime.graphics.Image {}
-@:image("assets/images/shipUp.png") #if display private #end class __ASSET__assets_images_shipup_png extends lime.graphics.Image {}
+@:image("assets/images/playerBullet.png") #if display private #end class __ASSET__assets_images_playerbullet_png extends lime.graphics.Image {}
+@:image("assets/images/shipFrames.png") #if display private #end class __ASSET__assets_images_shipframes_png extends lime.graphics.Image {}
 @:image("assets/images/wallpaper.png") #if display private #end class __ASSET__assets_images_wallpaper_png extends lime.graphics.Image {}
 @:file("assets/music/music-goes-here.txt") #if display private #end class __ASSET__assets_music_music_goes_here_txt extends lime.utils.Bytes {}
 @:file("assets/sounds/sounds-go-here.txt") #if display private #end class __ASSET__assets_sounds_sounds_go_here_txt extends lime.utils.Bytes {}
