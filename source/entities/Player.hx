@@ -19,7 +19,7 @@ class Player extends FlxSprite
 	{
 		super.update(elapsed);
 
-		velocity.set(Reg.velocidadCamara, 0);
+		//velocity.set(Reg.velocidadCamara, 0);
 
 		if (FlxG.keys.pressed.RIGHT)
 			velocity.x += 10;
@@ -32,19 +32,19 @@ class Player extends FlxSprite
 
 		if (velocity.y == 0)
 		{
-			loadGraphic(AssetPaths.playerStraight__png, true, 32, 16);
+			loadGraphic(AssetPaths.shipStraight__png, true, 32, 16);
 			animation.add("fly", [0, 1], 12, true);
 			animation.play("fly");
 		}
 		else if (velocity.y < 0)
 		{
-			//loadGraphic(AssetPaths.playerUp__png, true, 32, 16);
+			loadGraphic(AssetPaths.shipUp__png, true, 32, 16);
 			animation.add("fly", [0, 1], 12, true);
 			animation.play("fly");
 		}
 		else if (velocity.y > 0)
 		{
-			//loadGraphic(AssetPaths.playerDown__png, true, 32, 16);
+			loadGraphic(AssetPaths.shipDown__png, true, 32, 16);
 			animation.add("fly", [0, 1], 12, true);
 			animation.play("fly");
 		}

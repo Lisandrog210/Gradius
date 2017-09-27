@@ -42,6 +42,18 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
+		urls.push ("assets/images/shipDown.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/shipStraight.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
+		urls.push ("assets/images/shipUp.png");
+		types.push (lime.Assets.AssetType.IMAGE);
+		
+		
 		urls.push ("assets/images/wallpaper.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
@@ -139,7 +151,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "53",
+			build: "56",
 			company: "lisandro",
 			file: "Gradius",
 			fps: 60,
