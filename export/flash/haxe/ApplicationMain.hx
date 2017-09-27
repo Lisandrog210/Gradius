@@ -143,7 +143,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "63",
+			build: "64",
 			company: "lisandro",
 			file: "Gradius",
 			fps: 60,

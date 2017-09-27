@@ -5,11 +5,13 @@ import flixel.FlxState;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import entities.Player;
+import flixel.addons.display.FlxBackdrop;
 
 class PlayState extends FlxState
 {
 	private var player:Player;
 	private var pivot:FlxSprite;
+	private var background:FlxBackdrop;
 
 	override public function create():Void
 	{
@@ -21,8 +23,10 @@ class PlayState extends FlxState
 		pivot.velocity.x = Reg.velocidadCamara;
 		FlxG.camera.follow(pivot);
 		
+		background = new FlxBackdrop(AssetPaths.wallpaper__png);
+		
 		add(pivot);
-		add(new FlxSprite(0, 0, AssetPaths.wallpaper__png));
+		add(background);
 		add(player);
 	}
 
