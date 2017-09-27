@@ -38,7 +38,7 @@ class ApplicationMain {
 		types.push (lime.Assets.AssetType.TEXT);
 		
 		
-		urls.push ("assets/images/player.png");
+		urls.push ("assets/images/playerStraight.png");
 		types.push (lime.Assets.AssetType.IMAGE);
 		
 		
@@ -135,7 +135,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "3",
+			build: "45",
 			company: "lisandro",
 			file: "Gradius",
 			fps: 60,

@@ -515,7 +515,7 @@ class ApplicationMain {
 		
 		config = {
 			
-			build: "39",
+			build: "47",
 			company: "lisandro",
 			file: "Gradius",
 			fps: 60,
