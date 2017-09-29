@@ -1,8 +1,10 @@
 package entities;
 
 import flixel.FlxSprite;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.FlxG;
+
 
 class Player extends FlxSprite
 {
@@ -31,38 +33,64 @@ class Player extends FlxSprite
 			health.scale.set(2, 2);
 			Totalhealth.add(health);
 		}
-		
 		FlxG.state.add(Totalhealth);
 	}
 
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-
-		velocity.set(Reg.velocidadCamara, 0);
-
-		if (FlxG.keys.pressed.RIGHT)
-			velocity.x += 100;
-		if (FlxG.keys.pressed.LEFT)
-			velocity.x -= 100;
-		if (FlxG.keys.pressed.DOWN)
-			velocity.y += 100;
-		if (FlxG.keys.pressed.UP)
-			velocity.y -= 100;
-
-		if (velocity.y == 0)
-		{
-			animation.play("fly");
-		}
-		else if (velocity.y < 0)
-		{
-			animation.play("flyUp");
-		}
-		else if (velocity.y > 0)
-		{
-			animation.play("flyDown");
-		}
-
+		movement();
+		shootTimer(elapsed);
+		shoot();
 	}
-
+  
+  function shootTimer(elapsed:Float) 
+  {
+    Timer = Timer + elapsed;
+	
+    if (Timer > 0.25)
+    {
+      AllowShot = true;
+      Timer = 0;
+    }
+  }
+  function shoot()
+  {
+	if (FlxG.keys.pressed.Z)
+    {
+      if (AllowShot == true)
+		{
+			shot = new PlayerShot(x + 15, y + 10, AssetPaths.playerBullet__png);
+			FlxG.state.add(shot);
+			AllowShot = false;
+			Timer = 0;
+		}
+    }
+  }
+  function movement()
+  {
+    velocity.set(Reg.velocidadCamara, 0);
+	
+	if (FlxG.keys.pressed.RIGHT)
+		velocity.x += 100;
+	if (FlxG.keys.pressed.LEFT)
+		velocity.x -= 100;
+    if (FlxG.keys.pressed.DOWN)
+		velocity.y += 100;
+    if (FlxG.keys.pressed.UP)
+		velocity.y -= 100;
+ 
+    if (velocity.y == 0)
+    {
+      animation.play("fly");
+    }
+    else if (velocity.y < 0)
+    {
+      animation.play("flyUp");
+    }
+    else if (velocity.y > 0)
+    {
+      animation.play("flyDown");
+    }
+  }
 }
