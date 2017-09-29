@@ -17,7 +17,7 @@ class PlayState extends FlxState
 	{
 		super.create();
 
-		player = new Player(100, 150);
+		player = new Player(100, 150, 3);
 		pivot = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
 		pivot.makeGraphic(1, 1, 0x00000000);
 		pivot.velocity.x = Reg.velocidadCamara;
