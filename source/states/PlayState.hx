@@ -16,17 +16,17 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		super.create();
-
-		player = new Player(100, 150);
+		
 		pivot = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
 		pivot.makeGraphic(1, 1, 0x00000000);
 		pivot.velocity.x = Reg.velocidadCamara;
 		FlxG.camera.follow(pivot);
+		add(pivot);
 		
 		background = new FlxBackdrop(AssetPaths.wallpaper__png);
-		
-		add(pivot);
 		add(background);
+		
+		player = new Player(100, 150);
 		add(player);
 	}
 
@@ -34,4 +34,6 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 	}
+	
+	
 }

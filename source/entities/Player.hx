@@ -6,6 +6,11 @@ import flixel.FlxG;
 
 class Player extends FlxSprite
 {
+	private var shot: PlayerShot;
+	private var Timer: Float = 0;
+	private var AllowShot: Bool;
+	private var Lives:Int = 4;
+	private var Totalhealth:FlxTypedGroup<FlxSprite>;
 
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset)
 	{
@@ -17,7 +22,17 @@ class Player extends FlxSprite
 		animation.add("flyUp", [4, 5], 12, true);
 		animation.add("flyDown", [2, 3], 12, true);
 		animation.play("fly");
-
+		Totalhealth = new FlxTypedGroup<FlxSprite>();
+		
+		for (i in 1...Lives) 
+		{
+			var health = new FlxSprite(i * 20, 10, AssetPaths.life__png);
+			health.velocity.set(Reg.velocidadCamara, 0);
+			health.scale.set(2, 2);
+			Totalhealth.add(health);
+		}
+		
+		FlxG.state.add(Totalhealth);
 	}
 
 	override public function update(elapsed:Float):Void
