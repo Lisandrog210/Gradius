@@ -1,19 +1,13 @@
 package entities;
 
 import flixel.FlxSprite;
-import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.FlxG;
 
 class Player extends FlxSprite
 {
-	private var shot: PlayerShot;
-	private var Timer: Float = 0;
-	private var AllowShot: Bool;
-	private var Lives:Int;
-	private var Totalhealth:FlxTypedGroup<FlxSprite>;
 
-	public function new(?X:Float=0, ?Y:Float=0, ?Lives:Int, ?SimpleGraphic:FlxGraphicAsset)
+	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset)
 	{
 		super(X, Y, SimpleGraphic);
 		scale.set(2,2);
@@ -23,55 +17,15 @@ class Player extends FlxSprite
 		animation.add("flyUp", [4, 5], 12, true);
 		animation.add("flyDown", [2, 3], 12, true);
 		animation.play("fly");
-		
-		Totalhealth = new FlxTypedGroup<FlxSprite>();
-		
-		for (i in 0...Lives)
-		{
-			var heart:FlxSprite = new FlxSprite(i * 10, 2, AssetPaths.life__png);
-			Totalhealth.add(heart);
-		}
-		FlxG.state.add(Totalhealth);
+
 	}
 
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-		
-		movement();
-		shootTimer(elapsed);
-		shoot();
-	}
-	
-	function shootTimer(elapsed:Float) 
-	{
-		Timer = Timer + elapsed;
-		
-		if (Timer > 0.25)
-		{
-			AllowShot = true;
-			Timer = 0;
-		}
-	}
-	
-	function shoot() 
-	{
-		if (FlxG.keys.pressed.Z)
-		{
-			if (AllowShot == true) 
-			{
-				shot = new PlayerShot(x + 15, y + 10, AssetPaths.playerBullet__png);
-				FlxG.state.add(shot);
-				AllowShot = false;
-				Timer = 0;
-			}
-		}
-	}
-	
-	function movement() 
-	{
+
 		velocity.set(Reg.velocidadCamara, 0);
-		
+
 		if (FlxG.keys.pressed.RIGHT)
 			velocity.x += 100;
 		if (FlxG.keys.pressed.LEFT)
@@ -80,12 +34,20 @@ class Player extends FlxSprite
 			velocity.y += 100;
 		if (FlxG.keys.pressed.UP)
 			velocity.y -= 100;
+
 		if (velocity.y == 0)
+		{
 			animation.play("fly");
+		}
 		else if (velocity.y < 0)
+		{
 			animation.play("flyUp");
+		}
 		else if (velocity.y > 0)
+		{
 			animation.play("flyDown");
+		}
+
 	}
 
 }
