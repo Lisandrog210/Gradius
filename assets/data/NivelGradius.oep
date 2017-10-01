@@ -16,7 +16,7 @@
     <Width>50000</Width>
     <Height>240</Height>
   </LevelMaximumSize>
-  <Filename>C:\Users\822\Desktop\NivelGradius.oep</Filename>
+  <Filename>C:\Users\Lisandro\Desktop\Kraken\Gradius\assets\data\NivelGradius.oep</Filename>
   <AngleMode>Radians</AngleMode>
   <CameraEnabled>false</CameraEnabled>
   <CameraSize>
@@ -65,7 +65,7 @@
   <Tilesets>
     <Tileset>
       <Name>sea</Name>
-      <FilePath>..\Downloads\tilesetSea1.png</FilePath>
+      <FilePath>..\images\tilesetSea1.png</FilePath>
       <TileSize>
         <Width>16</Width>
         <Height>16</Height>
@@ -74,7 +74,7 @@
     </Tileset>
     <Tileset>
       <Name>mountain</Name>
-      <FilePath>..\Downloads\tilesetMountain1.png</FilePath>
+      <FilePath>..\images\tilesetMountain1.png</FilePath>
       <TileSize>
         <Width>32</Width>
         <Height>32</Height>
@@ -92,7 +92,7 @@
         <X>0</X>
         <Y>0</Y>
       </Origin>
-      <ImageDefinition DrawMode="Image" ImagePath="..\Downloads\ship2.png" Tiled="false">
+      <ImageDefinition DrawMode="Image" ImagePath="..\images\ship1.png" Tiled="true">
         <RectColor A="255" R="255" G="0" B="0" />
       </ImageDefinition>
       <ValueDefinitions />
@@ -107,7 +107,7 @@
         <X>0</X>
         <Y>0</Y>
       </Origin>
-      <ImageDefinition DrawMode="Image" ImagePath="..\Downloads\england1.png" Tiled="true">
+      <ImageDefinition DrawMode="Image" ImagePath="..\images\england1.png" Tiled="true">
         <RectColor A="255" R="255" G="0" B="0" />
       </ImageDefinition>
       <ValueDefinitions />
