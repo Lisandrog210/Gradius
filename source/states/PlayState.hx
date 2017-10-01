@@ -25,16 +25,16 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		super.create();
-		
+
 		enemyGroup = new FlxTypedGroup<Enemies>();
 
 		loader = new FlxOgmoLoader(AssetPaths.level1GradiusGG__oel);
 
-		tilemapSea = loader.loadTilemap(AssetPaths.tilesetSea1__png);
-		tilemapSea.setTileProperties(FlxObject.ANY);
+		tilemapSea = loader.loadTilemap(AssetPaths.tilesetSea1__png, 32, 32, "sea");
+		tilemapSea.setTileProperties(0, FlxObject.ANY, null, Player);
 
-		tilemapMount = loader.loadTilemap(AssetPaths.tilesetMountain1__png);
-		tilemapMount.setTileProperties(FlxObject.ANY);
+		tilemapMount = loader.loadTilemap(AssetPaths.tilesetMountain1__png,32,32,"mountain");
+		tilemapMount.setTileProperties(0, FlxObject.ANY, null, Player);
 
 		pivot = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
 		pivot.makeGraphic(1, 1, 0x00000000);
@@ -48,26 +48,26 @@ class PlayState extends FlxState
 		add(tilemapSea);
 		add(tilemapMount);
 
-		loader.loadEntities(entityCreator, "Entities");
+		loader.loadEntities(entityCreator, "enemies");
 
 		player = new Player(100, 150);
 		add(player);
 		add(enemyGroup);
 
-	 function entityCreator(entityName:String, entityData:Xml)
+	}
 
-		{
+	private function entityCreator(entityName:String, entityData:Xml)
 
-			var x:Int = Std.parseInt(entityData.get("x"));
+	{
 
-			var y:Int = Std.parseInt(entityData.get("y"));
+		var x:Int = Std.parseInt(entityData.get("x"));
 
-			var enemy:Enemies = new Enemies(x,y,AssetPaths.england1__png);
-			enemyGroup.add(enemy);
-			var enemyShip:Enemies = new Enemies(x, y, AssetPaths.ship1__png);
-			enemyGroup.add(enemyShip);
+		var y:Int = Std.parseInt(entityData.get("y"));
 
-		}
+		var plane1:Enemies = new Enemies(x,y,AssetPaths.england1__png);
+		enemyGroup.add(plane1);
+		var ship1:Enemies = new Enemies(x, y, AssetPaths.ship1__png);
+		enemyGroup.add(ship1);
 
 	}
 
