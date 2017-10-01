@@ -29,7 +29,7 @@
     <LayerDefinition xsi:type="TileLayerDefinition">
       <Name>sea</Name>
       <Grid>
-        <Width>32</Width>
+        <Width>16</Width>
         <Height>16</Height>
       </Grid>
       <ScrollFactor>
@@ -41,8 +41,8 @@
     <LayerDefinition xsi:type="TileLayerDefinition">
       <Name>mountain</Name>
       <Grid>
-        <Width>32</Width>
-        <Height>32</Height>
+        <Width>16</Width>
+        <Height>16</Height>
       </Grid>
       <ScrollFactor>
         <X>1</X>
@@ -76,8 +76,8 @@
       <Name>mountain</Name>
       <FilePath>..\images\tilesetMountain1.png</FilePath>
       <TileSize>
-        <Width>32</Width>
-        <Height>32</Height>
+        <Width>16</Width>
+        <Height>16</Height>
       </TileSize>
       <TileSep>0</TileSep>
     </Tileset>

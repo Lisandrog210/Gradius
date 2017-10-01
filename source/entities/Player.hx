@@ -72,13 +72,13 @@ class Player extends FlxSprite
     velocity.set(Reg.velocidadCamara, 0);
 	
 	if (FlxG.keys.pressed.RIGHT)
-		velocity.x += 100;
+		velocity.x += 120;
 	if (FlxG.keys.pressed.LEFT)
-		velocity.x -= 100;
+		velocity.x -= 120;
     if (FlxG.keys.pressed.DOWN)
-		velocity.y += 100;
+		velocity.y += 120;
     if (FlxG.keys.pressed.UP)
-		velocity.y -= 100;
+		velocity.y -= 120;
  
     if (velocity.y == 0)
     {

@@ -28,12 +28,12 @@ class PlayState extends FlxState
 
 		enemyGroup = new FlxTypedGroup<Enemies>();
 
-		loader = new FlxOgmoLoader(AssetPaths.level1GradiusGG__oel);
+		loader = new FlxOgmoLoader(AssetPaths.level3__oel);
 
-		tilemapSea = loader.loadTilemap(AssetPaths.tilesetSea1__png, 32, 32, "sea");
+		tilemapSea = loader.loadTilemap(AssetPaths.tilesetSea1__png, 16, 16, "sea");
 		tilemapSea.setTileProperties(0, FlxObject.ANY, null, Player);
 
-		tilemapMount = loader.loadTilemap(AssetPaths.tilesetMountain1__png,32,32,"mountain");
+		tilemapMount = loader.loadTilemap(AssetPaths.tilesetMountain1__png,16,16,"mountain");
 		tilemapMount.setTileProperties(0, FlxObject.ANY, null, Player);
 
 		pivot = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
@@ -50,7 +50,7 @@ class PlayState extends FlxState
 
 		loader.loadEntities(entityCreator, "enemies");
 
-		player = new Player(100, 150);
+		player = new Player(100, 50);
 		add(player);
 		add(enemyGroup);
 
