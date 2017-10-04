@@ -16,7 +16,7 @@
     <Width>50000</Width>
     <Height>240</Height>
   </LevelMaximumSize>
-  <Filename>C:\Users\Lisandro\Desktop\Kraken\Gradius\assets\data\NivelGradius.oep</Filename>
+  <Filename>C:\Users\822\Desktop\Nueva carpeta\NivelGradius.oep</Filename>
   <AngleMode>Radians</AngleMode>
   <CameraEnabled>false</CameraEnabled>
   <CameraSize>
@@ -29,8 +29,8 @@
     <LayerDefinition xsi:type="TileLayerDefinition">
       <Name>sea</Name>
       <Grid>
-        <Width>16</Width>
-        <Height>16</Height>
+        <Width>32</Width>
+        <Height>32</Height>
       </Grid>
       <ScrollFactor>
         <X>1</X>
@@ -41,8 +41,8 @@
     <LayerDefinition xsi:type="TileLayerDefinition">
       <Name>mountain</Name>
       <Grid>
-        <Width>16</Width>
-        <Height>16</Height>
+        <Width>32</Width>
+        <Height>32</Height>
       </Grid>
       <ScrollFactor>
         <X>1</X>
@@ -65,19 +65,19 @@
   <Tilesets>
     <Tileset>
       <Name>sea</Name>
-      <FilePath>..\images\tilesetSea1.png</FilePath>
+      <FilePath>tilesetSea1.png</FilePath>
       <TileSize>
-        <Width>16</Width>
-        <Height>16</Height>
+        <Width>32</Width>
+        <Height>32</Height>
       </TileSize>
       <TileSep>0</TileSep>
     </Tileset>
     <Tileset>
       <Name>mountain</Name>
-      <FilePath>..\images\tilesetMountain1.png</FilePath>
+      <FilePath>tilesetMountain1.png</FilePath>
       <TileSize>
-        <Width>16</Width>
-        <Height>16</Height>
+        <Width>32</Width>
+        <Height>32</Height>
       </TileSize>
       <TileSep>0</TileSep>
     </Tileset>
@@ -92,7 +92,7 @@
         <X>0</X>
         <Y>0</Y>
       </Origin>
-      <ImageDefinition DrawMode="Image" ImagePath="..\images\ship1.png" Tiled="true">
+      <ImageDefinition DrawMode="Image" ImagePath="ship1.png" Tiled="true">
         <RectColor A="255" R="255" G="0" B="0" />
       </ImageDefinition>
       <ValueDefinitions />
@@ -107,7 +107,7 @@
         <X>0</X>
         <Y>0</Y>
       </Origin>
-      <ImageDefinition DrawMode="Image" ImagePath="..\images\england1.png" Tiled="true">
+      <ImageDefinition DrawMode="Image" ImagePath="england1.png" Tiled="true">
         <RectColor A="255" R="255" G="0" B="0" />
       </ImageDefinition>
       <ValueDefinitions />

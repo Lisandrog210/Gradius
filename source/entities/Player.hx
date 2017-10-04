@@ -17,7 +17,7 @@ class Player extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset)
 	{
 		super(X, Y, SimpleGraphic);
-		scale.set(2,2);
+		scale.set(1,1);
 		updateHitbox();
 		loadGraphic(AssetPaths.shipFrames__png, true, 26, 15);
 		animation.add("fly", [0, 1], 12, true);
@@ -26,9 +26,11 @@ class Player extends FlxSprite
 		animation.play("fly");
 		Totalhealth = new FlxTypedGroup<FlxSprite>();
 		
+		
 		for (i in 1...Lives) 
 		{
 			var health = new FlxSprite(i * 20, 10, AssetPaths.life__png);
+			health.pixelPerfectPosition = false;
 			health.velocity.set(Reg.velocidadCamara, 0);
 			health.scale.set(2, 2);
 			Totalhealth.add(health);

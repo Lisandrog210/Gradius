@@ -28,13 +28,25 @@ class PlayState extends FlxState
 
 		enemyGroup = new FlxTypedGroup<Enemies>();
 
-		loader = new FlxOgmoLoader(AssetPaths.level3__oel);
+		loader = new FlxOgmoLoader(AssetPaths.level6__oel);
 
-		tilemapSea = loader.loadTilemap(AssetPaths.tilesetSea1__png, 16, 16, "sea");
-		tilemapSea.setTileProperties(0, FlxObject.ANY, null, Player);
+		tilemapSea = loader.loadTilemap(AssetPaths.tilesetSea1__png, 32, 32, "sea");
+		tilemapSea.setTileProperties(0, FlxObject.NONE);
+				tilemapSea.setTileProperties(1, FlxObject.ANY);
 
-		tilemapMount = loader.loadTilemap(AssetPaths.tilesetMountain1__png,16,16,"mountain");
-		tilemapMount.setTileProperties(0, FlxObject.ANY, null, Player);
+	
+		
+		
+
+		tilemapMount = loader.loadTilemap(AssetPaths.tilesetMountain1__png,32,32,"mountain");
+		tilemapMount.setTileProperties(0, FlxObject.NONE);
+		for (i in 1...14) 
+		{
+			tilemapMount.setTileProperties(i, FlxObject.ANY);
+	    }
+		
+		FlxG.worldBounds.set(0, 0, tilemapMount.width, tilemapMount.height);
+		
 
 		pivot = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
 		pivot.makeGraphic(1, 1, 0x00000000);
@@ -51,6 +63,8 @@ class PlayState extends FlxState
 		loader.loadEntities(entityCreator, "enemies");
 
 		player = new Player(100, 50);
+		
+		player.pixelPerfectPosition = false;
 		add(player);
 		add(enemyGroup);
 
@@ -67,11 +81,13 @@ class PlayState extends FlxState
 		switch (entityName)
 		{
 			case "plane1":
-				var plane1:Enemies = new Enemies(x,y,AssetPaths.england1__png);
+				var plane1:Enemies = new Enemies(x, y, AssetPaths.england1__png);
+				
 				enemyGroup.add(plane1);
 
 			case "ship1":
 				var ship1:Enemies = new Enemies(x, y, AssetPaths.ship1__png);
+				
 				enemyGroup.add(ship1);
 		}
 
@@ -80,10 +96,14 @@ class PlayState extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-		//FlxG.collide(tilemapSea, player);
-		//FlxG.collide(tilemapMount, player);
+		FlxG.collide(tilemapSea, player);
+		FlxG.collide(tilemapMount, player);
+		
+		
 
 	}
+	
+	
 
 }
 
