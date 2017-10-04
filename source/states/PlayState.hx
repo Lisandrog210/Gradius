@@ -64,10 +64,16 @@ class PlayState extends FlxState
 
 		var y:Int = Std.parseInt(entityData.get("y"));
 
-		var plane1:Enemies = new Enemies(x,y,AssetPaths.england1__png);
-		enemyGroup.add(plane1);
-		var ship1:Enemies = new Enemies(x, y, AssetPaths.ship1__png);
-		enemyGroup.add(ship1);
+		switch (entityName)
+		{
+			case "plane1":
+				var plane1:Enemies = new Enemies(x,y,AssetPaths.england1__png);
+				enemyGroup.add(plane1);
+
+			case "ship1":
+				var ship1:Enemies = new Enemies(x, y, AssetPaths.ship1__png);
+				enemyGroup.add(ship1);
+		}
 
 	}
 
