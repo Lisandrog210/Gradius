@@ -26,7 +26,6 @@ class Player extends FlxSprite
 		animation.play("fly");
 		Totalhealth = new FlxTypedGroup<FlxSprite>();
 		
-		
 		for (i in 1...Lives) 
 		{
 			var health = new FlxSprite(i * 20, 10, AssetPaths.life__png);
