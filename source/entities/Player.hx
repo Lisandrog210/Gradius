@@ -18,11 +18,38 @@ class Player extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset)
 	{
 		super(X, Y, SimpleGraphic);
-		scale.set(1,1);
+		scale.set(1, 1);
+		shot = new PlayerShot(x + 15, y + 10, AssetPaths.playerBullet__png);
+		shot.kill();
+		FlxG.state.add(shot);
 		updateHitbox();
 		AnimationSetup();
 		HealthSetup();
+		
 	}
+	
+	/*public function edges() 
+	{
+		if (x>camera.scroll.x - x) 
+		{
+			x = camera.scroll.x;
+		}
+		
+		if (x<0) 
+		{
+			x = width;
+		}
+		
+		if (y>camera.scroll.y - height) 
+		{
+			y = camera.scroll.y - height;
+		}
+		
+		if (y<0) 
+		{
+			y = height;
+		}
+	}*/
 	
 	function AnimationSetup() 
 	{
@@ -53,6 +80,7 @@ class Player extends FlxSprite
 		movement();
 		shootTimer(elapsed);
 		shoot();
+		//edges();
 	}
   
 	function shootTimer(elapsed:Float) 
@@ -71,8 +99,8 @@ class Player extends FlxSprite
 		{
 		if (AllowShot == true)
 			{
-				shot = new PlayerShot(x + 15, y + 10, AssetPaths.playerBullet__png);
-				FlxG.state.add(shot);
+				shot.reset(x + 15, y + 10);
+				shot.velocity.set(Reg.velocidadCamara + 300, 0);
 				AllowShot = false;
 				Timer = 0;
 			}

@@ -3,11 +3,7 @@ package entities;
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 
-/**
- * ...
- * @author ...
- */
-class EnemyShip extends FlxSprite 
+class EnemyShip extends EnemyBase
 {
 	private var AllowShot: Bool;
 	private var Timer: Float = 0;
@@ -15,10 +11,12 @@ class EnemyShip extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		velocity.set(30, 0);
+		loadGraphic(AssetPaths.ship1__png, true, 30, 17);
+		//velocity.set(30, 0);
+		
 	}
 	
-	override public function update(elapsed:Float):Void 
+/*	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
 		Shoot();
@@ -43,5 +41,5 @@ class EnemyShip extends FlxSprite
 			var shot: EnemyShot = new EnemyShot(x, y, AssetPaths.playerBullet__png);
 			shot.velocity.set(0, 20);
 		}
-	}
+	}*/
 }

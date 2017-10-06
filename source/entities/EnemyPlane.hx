@@ -5,28 +5,28 @@ import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.tweens.FlxTween;
 
 
-class Enemies extends FlxSprite 
+class EnemyPlane extends EnemyBase 
 {
 	private var shot: EnemyShot;
 	
-	public function new(?X:Float=0, ?Y:Float=0) 
+	public function new(?x:Float=0, ?y:Float=0,?SimpleGraphic:FlxGraphicAsset) 
 	{
-		super(X, Y);
+		super(x, y, SimpleGraphic);
 		loadGraphic(AssetPaths.england1__png, true, 26, 15);
 		animation.add("fly", [0, 1], 12, true);
 		animation.play("fly");
 		velocity.set( -40, 0);
 	}
 	
-	override public function update(elapsed:Float):Void 
+	/*override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
-		Shoot();
+		//Shoot();
 	}
 	
 	function Shoot() 
 	{
 		
-	}
+	}*/
 	
 }
