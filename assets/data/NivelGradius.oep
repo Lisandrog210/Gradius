@@ -16,7 +16,7 @@
     <Width>50000</Width>
     <Height>240</Height>
   </LevelMaximumSize>
-  <Filename>C:\Users\Agustinb\Documents\Trabajos Desarrollo\Gradius\assets\data\NivelGradius.oep</Filename>
+  <Filename>C:\Users\Lisandro\Desktop\Kraken\Gradius\assets\data\NivelGradius.oep</Filename>
   <AngleMode>Radians</AngleMode>
   <CameraEnabled>false</CameraEnabled>
   <CameraSize>
@@ -29,7 +29,7 @@
     <LayerDefinition xsi:type="TileLayerDefinition">
       <Name>sea</Name>
       <Grid>
-        <Width>16</Width>
+        <Width>32</Width>
         <Height>16</Height>
       </Grid>
       <ScrollFactor>
@@ -41,8 +41,8 @@
     <LayerDefinition xsi:type="TileLayerDefinition">
       <Name>mountain</Name>
       <Grid>
-        <Width>16</Width>
-        <Height>16</Height>
+        <Width>32</Width>
+        <Height>32</Height>
       </Grid>
       <ScrollFactor>
         <X>1</X>
@@ -76,8 +76,8 @@
       <Name>mountain</Name>
       <FilePath>..\images\tilesetMountain1.png</FilePath>
       <TileSize>
-        <Width>16</Width>
-        <Height>16</Height>
+        <Width>32</Width>
+        <Height>32</Height>
       </TileSize>
       <TileSep>0</TileSep>
     </Tileset>
@@ -110,9 +110,7 @@
       <ImageDefinition DrawMode="Image" ImagePath="..\images\england1.png" Tiled="true">
         <RectColor A="255" R="255" G="0" B="0" />
       </ImageDefinition>
-      <ValueDefinitions>
-        <ValueDefinition xsi:type="IntValueDefinition" Name="velocidad" Default="-100" Min="0" Max="100" ShowSlider="false" />
-      </ValueDefinitions>
+      <ValueDefinitions />
       <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
     </EntityDefinition>
   </EntityDefinitions>

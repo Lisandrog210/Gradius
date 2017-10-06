@@ -53,7 +53,7 @@ class PlayState extends FlxState
 	
 	function LevelSetup() 
 	{
-		loader = new FlxOgmoLoader(AssetPaths.level6__oel);
+		loader = new FlxOgmoLoader(AssetPaths.level7__oel);
 		tilemapSea = loader.loadTilemap(AssetPaths.tilesetSea1__png, 16, 16, "sea");
 		tilemapMount = loader.loadTilemap(AssetPaths.tilesetMountain1__png, 16, 16, "mountain");
 		FlxG.worldBounds.set(0, 0, tilemapMount.width, tilemapMount.height);
