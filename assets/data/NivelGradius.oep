@@ -16,7 +16,7 @@
     <Width>50000</Width>
     <Height>240</Height>
   </LevelMaximumSize>
-  <Filename>C:\Users\Lisandro\Desktop\Kraken\Gradius\assets\data\NivelGradius.oep</Filename>
+  <Filename>C:\Users\822\Desktop\OGMO\NivelGradius.oep</Filename>
   <AngleMode>Radians</AngleMode>
   <CameraEnabled>false</CameraEnabled>
   <CameraSize>
@@ -29,7 +29,7 @@
     <LayerDefinition xsi:type="TileLayerDefinition">
       <Name>sea</Name>
       <Grid>
-        <Width>32</Width>
+        <Width>16</Width>
         <Height>16</Height>
       </Grid>
       <ScrollFactor>
@@ -41,8 +41,8 @@
     <LayerDefinition xsi:type="TileLayerDefinition">
       <Name>mountain</Name>
       <Grid>
-        <Width>32</Width>
-        <Height>32</Height>
+        <Width>16</Width>
+        <Height>16</Height>
       </Grid>
       <ScrollFactor>
         <X>1</X>
@@ -65,7 +65,7 @@
   <Tilesets>
     <Tileset>
       <Name>sea</Name>
-      <FilePath>..\images\tilesetSea1.png</FilePath>
+      <FilePath>tilesetSea1.png</FilePath>
       <TileSize>
         <Width>16</Width>
         <Height>16</Height>
@@ -74,10 +74,10 @@
     </Tileset>
     <Tileset>
       <Name>mountain</Name>
-      <FilePath>..\images\tilesetMountain1.png</FilePath>
+      <FilePath>tilesetMountain1.png</FilePath>
       <TileSize>
-        <Width>32</Width>
-        <Height>32</Height>
+        <Width>16</Width>
+        <Height>16</Height>
       </TileSize>
       <TileSep>0</TileSep>
     </Tileset>
@@ -92,8 +92,8 @@
         <X>0</X>
         <Y>0</Y>
       </Origin>
-      <ImageDefinition DrawMode="Image" ImagePath="..\images\ship1.png" Tiled="true">
-        <RectColor A="255" R="255" G="0" B="0" />
+      <ImageDefinition DrawMode="Rectangle" ImagePath="..\images\ship1.png" Tiled="true">
+        <RectColor A="255" R="255" G="255" B="0" />
       </ImageDefinition>
       <ValueDefinitions />
       <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
@@ -107,7 +107,22 @@
         <X>0</X>
         <Y>0</Y>
       </Origin>
-      <ImageDefinition DrawMode="Image" ImagePath="..\images\england1.png" Tiled="true">
+      <ImageDefinition DrawMode="Rectangle" ImagePath="..\images\england1.png" Tiled="true">
+        <RectColor A="255" R="0" G="255" B="0" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="storm1" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>30</Width>
+        <Height>23</Height>
+      </Size>
+      <Origin>
+        <X>0</X>
+        <Y>0</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Rectangle" ImagePath="" Tiled="false">
         <RectColor A="255" R="255" G="0" B="0" />
       </ImageDefinition>
       <ValueDefinitions />

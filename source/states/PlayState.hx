@@ -3,6 +3,7 @@ package states;
 import AssetPaths;
 import entities.Enemies;
 import entities.EnemyShip;
+import entities.NewClass;
 import flixel.FlxCamera;
 import flixel.FlxState;
 import flixel.FlxG;
@@ -23,6 +24,7 @@ class PlayState extends FlxState
 	private var tilemapSea:FlxTilemap;
 	private var tilemapMount:FlxTilemap;
 	private var enemyGroup:FlxTypedGroup<Dynamic>;
+	private var stormGroup:FlxTypedGroup<Dynamic>;
 	
 
 	override public function create():Void
@@ -30,6 +32,7 @@ class PlayState extends FlxState
 		super.create();
 		
 		enemyGroup = new FlxTypedGroup<Dynamic>();
+		stormGroup = new FlxTypedGroup<Dynamic>();
 		
 		LevelSetup();
 		CameraSetup();
@@ -42,6 +45,7 @@ class PlayState extends FlxState
 		player.pixelPerfectPosition = false;
 		add(player);
 		add(enemyGroup);
+		add(stormGroup);
 	}
 	
 	function CameraSetup() 
@@ -55,7 +59,7 @@ class PlayState extends FlxState
 	
 	function LevelSetup() 
 	{
-		loader = new FlxOgmoLoader(AssetPaths.level7__oel);
+		loader = new FlxOgmoLoader(AssetPaths.level8__oel);
 		tilemapSea = loader.loadTilemap(AssetPaths.tilesetSea1__png, 16, 16, "sea");
 		tilemapMount = loader.loadTilemap(AssetPaths.tilesetMountain1__png, 16, 16, "mountain");
 		FlxG.worldBounds.set(0, 0, tilemapMount.width, tilemapMount.height);
@@ -75,6 +79,10 @@ class PlayState extends FlxState
 			case "ship1":
 				var ship1:EnemyShip = new EnemyShip(x, y, AssetPaths.ship1__png);
 				enemyGroup.add(ship1);
+				
+			case "storm1":
+				var storm1:NewClass = new NewClass(x, y, AssetPaths.storm30x69__png);
+				stormGroup.add(storm1);
 		}
 	}
 
@@ -109,7 +117,16 @@ class PlayState extends FlxState
 			}
 		}
 		
-		player.
+		for (h in 0...stormGroup.length)
+		{
+			if (FlxG.collide(player, stormGroup.members[h])) 
+			{
+				player.kill();
+			}
+			
+		}
+		
+		//player.
 		
 		
 	}
