@@ -8,7 +8,7 @@ import flixel.FlxG;
 
 class Player extends FlxSprite
 {
-	private var shot: PlayerShot;
+	public var shot(get, null): PlayerShot;
 	private var Timer: Float = 0;
 	private var AllowShot: Bool;
 	private var Lives:Int = 4;
@@ -108,18 +108,25 @@ class Player extends FlxSprite
 	{
 		super.kill();
 		Totalhealth.members.pop();
-		if (Totalhealth.length == null) 
+		Lives--;
+		if (Lives == 0) 
 		{
 			this.destroy();
 		}
 		else 
 		{
 			KeepAlive = true;
+			this.reset(x, y - 40);
 		}
 	}
 	
 	function get_KeepAlive():Bool 
 	{
 		return KeepAlive;
+	}
+	
+	function get_shot():PlayerShot 
+	{
+		return shot;
 	}
 }

@@ -15,7 +15,7 @@ class Enemies extends FlxSprite
 		loadGraphic(AssetPaths.england1__png, true, 26, 15);
 		animation.add("fly", [0, 1], 12, true);
 		animation.play("fly");
-		velocity.set( -60, 0);
+		velocity.set( -40, 0);
 	}
 	
 	override public function update(elapsed:Float):Void 

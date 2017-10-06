@@ -3,6 +3,7 @@ package states;
 import AssetPaths;
 import entities.Enemies;
 import entities.EnemyShip;
+import flixel.FlxCamera;
 import flixel.FlxState;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -21,7 +22,8 @@ class PlayState extends FlxState
 	private var background:FlxBackdrop;
 	private var tilemapSea:FlxTilemap;
 	private var tilemapMount:FlxTilemap;
-	var enemyGroup:FlxTypedGroup<Dynamic>;
+	private var enemyGroup:FlxTypedGroup<Dynamic>;
+	
 
 	override public function create():Void
 	{
@@ -48,7 +50,7 @@ class PlayState extends FlxState
 		pivot.makeGraphic(1, 1, 0x00000000);
 		pivot.velocity.x = Reg.velocidadCamara;
 		FlxG.camera.follow(pivot);
-		add(pivot);
+		add(pivot);		
 	}
 	
 	function LevelSetup() 
@@ -85,26 +87,30 @@ class PlayState extends FlxState
 	function CollisionDetect() 
 	{
 		FlxG.collide(tilemapSea, player);
+		
 		if (FlxG.collide(tilemapMount, player)) 
 		{
 			player.kill();
-			if (player.KeepAlive == true) 
-			{
-				player.reset(camera.width - 50, 50);
-			}
 		}
-		for (i in 0...enemyGroup.length) 
+		
+		for (i in 0...enemyGroup.length)
 		{
-			if (FlxG.collide(enemyGroup, player)) 
+			if (FlxG.collide(enemyGroup, player))
 			{
 				player.kill();
 				enemyGroup.members[i].kill();
-				if (player.KeepAlive == true) 
-				{
-					player.reset(camera.width - 50, 50);
-				}
 			}
 		}
+		for (j in 0...enemyGroup.length)
+		{
+			if (FlxG.collide(player.shot, enemyGroup.members[j]))
+			{
+				enemyGroup.members[j].kill();
+			}
+		}
+		
+		player.
+		
 		
 	}
 }
