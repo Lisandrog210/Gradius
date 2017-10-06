@@ -7,7 +7,8 @@ import flixel.tweens.FlxTween;
 
 class Enemies extends FlxSprite 
 {
-
+	private var shot: EnemyShot;
+	
 	public function new(?X:Float=0, ?Y:Float=0) 
 	{
 		super(X, Y);
@@ -20,6 +21,12 @@ class Enemies extends FlxSprite
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
+		Shoot();
+	}
+	
+	function Shoot() 
+	{
+		
 	}
 	
 }

@@ -85,7 +85,27 @@ class PlayState extends FlxState
 	function CollisionDetect() 
 	{
 		FlxG.collide(tilemapSea, player);
-		FlxG.collide(tilemapMount, player);
+		if (FlxG.collide(tilemapMount, player)) 
+		{
+			player.kill();
+			if (player.KeepAlive == true) 
+			{
+				player.reset(camera.width - 50, 50);
+			}
+		}
+		for (i in 0...enemyGroup.length) 
+		{
+			if (FlxG.collide(enemyGroup, player)) 
+			{
+				player.kill();
+				enemyGroup.members[i].kill();
+				if (player.KeepAlive == true) 
+				{
+					player.reset(camera.width - 50, 50);
+				}
+			}
+		}
+		
 	}
 }
 

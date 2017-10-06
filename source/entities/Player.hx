@@ -12,6 +12,7 @@ class Player extends FlxSprite
 	private var Timer: Float = 0;
 	private var AllowShot: Bool;
 	private var Lives:Int = 4;
+	public var KeepAlive(get, null): Bool;
 	private var Totalhealth:FlxTypedGroup<FlxSprite>;
 
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset)
@@ -19,13 +20,22 @@ class Player extends FlxSprite
 		super(X, Y, SimpleGraphic);
 		scale.set(1,1);
 		updateHitbox();
+		AnimationSetup();
+		HealthSetup();
+	}
+	
+	function AnimationSetup() 
+	{
 		loadGraphic(AssetPaths.shipFrames__png, true, 26, 15);
 		animation.add("fly", [0, 1], 12, true);
 		animation.add("flyUp", [4, 5], 12, true);
 		animation.add("flyDown", [2, 3], 12, true);
 		animation.play("fly");
+	}
+	
+	function HealthSetup() 
+	{
 		Totalhealth = new FlxTypedGroup<FlxSprite>();
-		
 		for (i in 1...Lives) 
 		{
 			var health = new FlxSprite(i * 20, 10, AssetPaths.life__png);
@@ -45,53 +55,71 @@ class Player extends FlxSprite
 		shoot();
 	}
   
-  function shootTimer(elapsed:Float) 
-  {
-    Timer = Timer + elapsed;
-	
-    if (Timer > 0.25)
-    {
-      AllowShot = true;
-      Timer = 0;
-    }
-  }
-  function shoot()
-  {
-	if (FlxG.keys.pressed.Z)
-    {
-      if (AllowShot == true)
+	function shootTimer(elapsed:Float) 
+	{
+		Timer = Timer + elapsed;
+		
+		if (Timer > 0.25)
 		{
-			shot = new PlayerShot(x + 15, y + 10, AssetPaths.playerBullet__png);
-			FlxG.state.add(shot);
-			AllowShot = false;
+			AllowShot = true;
 			Timer = 0;
 		}
-    }
-  }
-  function movement()
-  {
-    velocity.set(Reg.velocidadCamara, 0);
-	
-	if (FlxG.keys.pressed.RIGHT)
+	}	
+	function shoot()
+	{
+		if (FlxG.keys.pressed.Z)
+		{
+		if (AllowShot == true)
+			{
+				shot = new PlayerShot(x + 15, y + 10, AssetPaths.playerBullet__png);
+				FlxG.state.add(shot);
+				AllowShot = false;
+				Timer = 0;
+			}
+		}
+	}
+	function movement()
+	{
+		velocity.set(Reg.velocidadCamara, 0);
+		
+		if (FlxG.keys.pressed.RIGHT)
 		velocity.x += 120;
-	if (FlxG.keys.pressed.LEFT)
+		if (FlxG.keys.pressed.LEFT)
 		velocity.x -= 120;
-    if (FlxG.keys.pressed.DOWN)
+		if (FlxG.keys.pressed.DOWN)
 		velocity.y += 120;
-    if (FlxG.keys.pressed.UP)
-		velocity.y -= 120;
- 
-    if (velocity.y == 0)
-    {
-      animation.play("fly");
-    }
-    else if (velocity.y < 0)
-    {
-      animation.play("flyUp");
-    }
+		if (FlxG.keys.pressed.UP)
+			velocity.y -= 120;
+		
+		if (velocity.y == 0)
+		{
+			animation.play("fly");
+		}
+		else if (velocity.y < 0)
+		{
+			animation.play("flyUp");
+		}
     else if (velocity.y > 0)
-    {
-      animation.play("flyDown");
-    }
-  }
+		{
+			animation.play("flyDown");
+		}
+	}
+	override public function kill():Void 
+	{
+		super.kill();
+		Totalhealth.members.pop();
+		if (Totalhealth.length == null) 
+		{
+			this.destroy();
+		}
+		else 
+		{
+			KeepAlive = true;
+		}
+	}
+	
+	function get_KeepAlive():Bool 
+	{
+		return KeepAlive;
+	}
 }
