@@ -15,7 +15,7 @@ class EnemyShot extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		color.red;
-		scale.set(4, 4);
+		scale.set(2, 2);
 	}
 	
 }

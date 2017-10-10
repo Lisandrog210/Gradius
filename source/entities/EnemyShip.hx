@@ -1,5 +1,6 @@
 package entities;
 
+import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 
@@ -16,7 +17,7 @@ class EnemyShip extends EnemyBase
 		
 	}
 	
-/*	override public function update(elapsed:Float):Void 
+	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
 		Shoot();
@@ -27,7 +28,7 @@ class EnemyShip extends EnemyBase
 	{
 		Timer = Timer + elapsed;
 		
-		if (Timer > 0.2)
+		if (Timer > 5)
 		{
 			AllowShot = true;
 			Timer = 0;
@@ -39,7 +40,9 @@ class EnemyShip extends EnemyBase
 		if (AllowShot == true) 
 		{
 			var shot: EnemyShot = new EnemyShot(x, y, AssetPaths.playerBullet__png);
-			shot.velocity.set(0, 20);
+			shot.velocity.set(0, -20);
+			FlxG.state.add(shot);
+			AllowShot = false;
 		}
-	}*/
+	}
 }

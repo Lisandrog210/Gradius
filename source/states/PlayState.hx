@@ -31,13 +31,13 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		super.create();
-
+		
 		enemyGroup = new FlxTypedGroup<EnemyBase>();
 		stormGroup = new FlxTypedGroup<Storm>();
-
+		
 		LevelSetup();
 		CameraSetup();
-
+		
 		background = new FlxBackdrop(AssetPaths.wallpaper1__png);
 		add(background);
 		add(tilemapSea);
@@ -105,11 +105,11 @@ class PlayState extends FlxState
 			case "plane1":
 				var plane1:EnemyPlane = new EnemyPlane(x, y,AssetPaths.england1__png);
 				enemyGroup.add(plane1);
-
+				
 			case "ship1":
 				var ship1:EnemyShip = new EnemyShip(x, y, AssetPaths.ship1__png);
 				enemyGroup.add(ship1);
-
+				
 			case "storm1":
 				var storm1:Storm = new Storm(x, y, AssetPaths.storm30x69__png);
 				stormGroup.add(storm1);
