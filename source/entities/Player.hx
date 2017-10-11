@@ -89,7 +89,16 @@ class Player extends FlxSprite
 		shoot();
 		Limites();
 	}
-  
+	
+	function livesStop()
+	{
+	if (FlxG.camera.scroll.x > 5900)
+		for (i in 0...Totalhealth.length) 
+		{
+			Totalhealth.members[i].velocity.x = 0;
+		}
+	}
+	
 	function shootTimer(elapsed:Float) 
 	{
 		Timer = Timer + elapsed;

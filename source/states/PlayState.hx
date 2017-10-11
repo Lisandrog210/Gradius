@@ -149,7 +149,7 @@ class PlayState extends FlxState
 
 	function camerastop()
 	{
-		if (FlxG.camera.scroll.x > 5800)
+		if (FlxG.camera.scroll.x > 5900)
 		{
 			pivot.velocity.x = 0;
 			for (i in 0...stormGroup.length) 
@@ -159,8 +159,10 @@ class PlayState extends FlxState
 			}
 			for (j in 0...enemyBombers.length) 
 			{
-				enemyBombers.members[j].velocity.x = 0;
+				enemyBombers.members[j].kill();
 			}
+			
+			
 		}
 	}
 
