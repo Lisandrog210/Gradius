@@ -43,28 +43,14 @@ class Player extends FlxSprite
 		FlxG.state.add(Bullets);
 	}
 	
-	/*public function edges() 
+	private function checkBoundaries():Void
 	{
-		if (x>camera.scroll.x - x) 
-		{
+		if (x > camera.scroll.x + FlxG.width - width)
+			x = camera.scroll.x + FlxG.width - width;
+		if (x < camera.scroll.x)
 			x = camera.scroll.x;
-		}
-		
-		if (x<0) 
-		{
-			x = width;
-		}
-		
-		if (y>camera.scroll.y - height) 
-		{
-			y = camera.scroll.y - height;
-		}
-		
-		if (y<0) 
-		{
-			y = height;
-		}
-	}*/
+	}
+
 	
 	function AnimationSetup() 
 	{
@@ -95,7 +81,7 @@ class Player extends FlxSprite
 		movement();
 		shootTimer(elapsed);
 		shoot();
-		//edges();
+		checkBoundaries();
 	}
   
 	function shootTimer(elapsed:Float) 

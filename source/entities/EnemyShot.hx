@@ -1,5 +1,6 @@
 package entities;
 
+import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.util.FlxColor;
@@ -16,6 +17,20 @@ class EnemyShot extends FlxSprite
 		super(X, Y, SimpleGraphic);
 		color.red;
 		scale.set(2, 2);
+	}
+	
+	override public function update(elapsed:Float):Void 
+	{
+		super.update(elapsed);
+		limites();
+	}
+	
+	function limites() 
+	{
+		if (x > camera.scroll.x + FlxG.width - width)
+		{
+			this.kill();
+		}
 	}
 	
 }

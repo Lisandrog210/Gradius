@@ -32,7 +32,7 @@ class EnemyPlane extends EnemyBase
 	{
 		Timer = Timer + elapsed;
 		
-		if (Timer > 6)
+		if (Timer > 4)
 		{
 			AllowShot = true;
 			Timer = 0;
@@ -44,7 +44,7 @@ class EnemyPlane extends EnemyBase
 		if (AllowShot == true) 
 		{
 			var shot: EnemyShot = new EnemyShot(x, y, AssetPaths.playerBullet__png);
-			shot.velocity.set( -50, 0);
+			shot.velocity.set( -100, 0);
 			FlxG.state.add(shot);
 			AllowShot = false;
 		}

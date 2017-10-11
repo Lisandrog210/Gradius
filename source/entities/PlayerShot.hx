@@ -1,5 +1,6 @@
 package entities;
 
+import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 
@@ -21,8 +22,16 @@ class PlayerShot extends FlxSprite
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
+		limites();
 		
-		
+	}
+	
+	function limites() 
+	{
+		if (x > camera.scroll.x + FlxG.width - width) 
+		{
+			this.kill();
+		}
 	}
 	
 }
