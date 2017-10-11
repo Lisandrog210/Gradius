@@ -2,6 +2,7 @@ package states;
 
 import AssetPaths;
 import entities.EnemyBase;
+import entities.EnemyBomber;
 import entities.EnemyPlane;
 import entities.EnemyShip;
 import entities.PlayerShot;
@@ -113,6 +114,10 @@ class PlayState extends FlxState
 			case "storm1":
 				var storm1:Storm = new Storm(x, y, AssetPaths.storm30x69__png);
 				stormGroup.add(storm1);
+				
+			case "bomber1":
+				var bomber1:EnemyBomber = new EnemyBomber(x, y, AssetPaths.bomber__png);
+				enemyGroup.add(bomber1);
 		}
 	}
 
