@@ -17,6 +17,9 @@ class EnemyBomber extends EnemyBase
 		animation.play("fly");
 		velocity.set( -40, 0);
 	}
-	
+	override public function update(elapsed:Float):Void 
+	{
+		super.update(elapsed);
+	}
 	
 }

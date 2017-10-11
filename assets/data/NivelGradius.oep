@@ -16,7 +16,7 @@
     <Width>50000</Width>
     <Height>240</Height>
   </LevelMaximumSize>
-  <Filename>C:\Users\822\Desktop\Kraken\Gradius\assets\data\NivelGradius.oep</Filename>
+  <Filename>C:\Users\Lisandro\Desktop\OGMO\NivelGradius.oep</Filename>
   <AngleMode>Radians</AngleMode>
   <CameraEnabled>false</CameraEnabled>
   <CameraSize>
@@ -65,7 +65,7 @@
   <Tilesets>
     <Tileset>
       <Name>sea</Name>
-      <FilePath>..\images\tilesetSea1.png</FilePath>
+      <FilePath>tilesetSea1.png</FilePath>
       <TileSize>
         <Width>16</Width>
         <Height>16</Height>
@@ -74,7 +74,7 @@
     </Tileset>
     <Tileset>
       <Name>mountain</Name>
-      <FilePath>..\images\tilesetMountain1.png</FilePath>
+      <FilePath>tilesetMountain1.png</FilePath>
       <TileSize>
         <Width>16</Width>
         <Height>16</Height>
@@ -124,6 +124,21 @@
       </Origin>
       <ImageDefinition DrawMode="Rectangle" ImagePath="" Tiled="false">
         <RectColor A="255" R="255" G="0" B="0" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="bomber1" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>28</Width>
+        <Height>11</Height>
+      </Size>
+      <Origin>
+        <X>0</X>
+        <Y>0</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Rectangle" ImagePath="" Tiled="false">
+        <RectColor A="255" R="0" G="255" B="255" />
       </ImageDefinition>
       <ValueDefinitions />
       <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
