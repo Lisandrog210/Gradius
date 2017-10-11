@@ -17,14 +17,14 @@ class DefeatMenu extends FlxState
 
 	override public function create():Void
 	{
-		Title = new FlxText(50, 20, FlxG.width, "Defeat");
+		Title = new FlxText(100, 20, FlxG.width, "Defeat");
 		Title.setFormat(null, 12, FlxColor.RED);
 		add(Title);
 		
-		Text = new FlxText(15, 50, FlxG.width, "Press 'Space' to menu");
+		Text = new FlxText(70, 50, FlxG.width, "Press 'Space' to menu");
 		add(Text);
 		
-		Text2 = new FlxText(15, 70, FlxG.width, "press 'R' to restart");
+		Text2 = new FlxText(80, 70, FlxG.width, "Press 'R' to restart");
 		add(Text2);
 	}
 	override public function update(elapsed:Float):Void 

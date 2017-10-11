@@ -5,10 +5,6 @@ import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.util.FlxColor;
 
-/**
- * ...
- * @author ...
- */
 class EnemyShot extends FlxSprite 
 {
 

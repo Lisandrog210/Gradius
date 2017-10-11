@@ -134,7 +134,7 @@ class PlayState extends FlxState
 
 			case "boss1":
 				var boss1:Boss = new Boss(x, y, AssetPaths.boss1__png);
-				bossgroup.add(boss1);
+				bossgroup.add(boss1);			
 
 		}
 	}
@@ -163,7 +163,6 @@ class PlayState extends FlxState
 				enemyBombers.members[j].kill();
 			}
 			
-			//player.velocity.x = 0;
 		}
 		
 	}
@@ -186,7 +185,7 @@ class PlayState extends FlxState
 		FlxG.overlap(player.Bullets, enemyPlanes, collideShotEnemy);
 		FlxG.overlap(player.Bullets, enemyShips, collideShotEnemy);
 		FlxG.overlap(player.Bullets, enemyBombers, collideShotEnemy);
-		FlxG.overlap(player.Bullets, bossgroup, collideBossPlayershot);
+		FlxG.collide(player.Bullets, bossgroup, collideBossPlayershot);
 		FlxG.overlap(player, stormGroup, collidePlayerStorm);
 		
 		for (i in 0...bossgroup.length) 

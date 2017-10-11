@@ -6,6 +6,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.FlxG;
 import states.DefeatMenu;
+import flixel.math.FlxMath;
 
 
 class Player extends FlxSprite
@@ -26,6 +27,7 @@ class Player extends FlxSprite
 		updateHitbox();
 		AnimationSetup();
 		HealthSetup();
+		
 		BulletsSetup();
 		
 	}
@@ -74,9 +76,11 @@ class Player extends FlxSprite
 		{
 			var health = new FlxSprite(i * 20, 10, AssetPaths.life__png);
 			health.pixelPerfectPosition = false;
-			health.velocity.set(Reg.velocidadCamara, 0);
-			health.scale.set(2, 2);
+			health.scale.set(2, 2);			
 			Totalhealth.add(health);
+			health.scrollFactor.set(0, 0);
+			
+			
 		}
 		FlxG.state.add(Totalhealth);
 	}
@@ -88,25 +92,9 @@ class Player extends FlxSprite
 		shootTimer(elapsed);
 		shoot();
 		Limites();
-		//livesStop();
 	}
 	
-	/*public function livesStop()
-	{
-	if (FlxG.camera.scroll.x > 5900)
-		for (i in 0...Totalhealth.length) 
-		{
-			Totalhealth.members[i].velocity.x = 0;
-		}
-	}*/
 	
-	/*function playerStop()
-	{
-		if (FlxG.camera.scroll.x > 5900) 
-		{
-			this.velocity.x = 0;
-		}
-	}*/
 	
 	function shootTimer(elapsed:Float) 
 	{
@@ -140,6 +128,8 @@ class Player extends FlxSprite
 	public function movement()
 	{
 		velocity.set(Reg.velocidadCamara, 0);
+		
+		//scrollFactor.set(0,0);
 		
 		if (FlxG.keys.pressed.RIGHT)
 		velocity.x += 120;

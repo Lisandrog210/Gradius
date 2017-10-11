@@ -3,12 +3,13 @@ package entities;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
+import entities.BossShot;
 
 class Boss extends FlxSprite 
 {
 	private var Timer: Float = 0;
 	private var AllowShot: Bool = false;
-	public var shot(get, null): EnemyShot;
+	public var shot(get, null): BossShot;
 	private var initialY: Float;
 
 	public function new(?x:Float=0, ?y:Float=0,?SimpleGraphic:FlxGraphicAsset) 
@@ -55,7 +56,7 @@ class Boss extends FlxSprite
 	{
 		if (AllowShot == true) 
 		{
-			shot = new EnemyShot(x, y, AssetPaths.missile1__png);
+			shot = new BossShot(x, y, AssetPaths.missile1__png);
 			shot.velocity.set( -40, 0);
 			shot.scale.set(1, 1);
 			FlxG.state.add(shot);
@@ -63,7 +64,7 @@ class Boss extends FlxSprite
 		}
 	}
 	
-	function get_shot():EnemyShot 
+	function get_shot():BossShot 
 	{
 		return shot;
 	}
