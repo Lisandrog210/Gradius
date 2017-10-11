@@ -88,6 +88,7 @@ class Player extends FlxSprite
 		shootTimer(elapsed);
 		shoot();
 		Limites();
+		livesStop();
 	}
 	
 	function livesStop()
@@ -98,6 +99,14 @@ class Player extends FlxSprite
 			Totalhealth.members[i].velocity.x = 0;
 		}
 	}
+	
+	/*function playerStop()
+	{
+		if (FlxG.camera.scroll.x > 5900) 
+		{
+			this.velocity.x = 0;
+		}
+	}*/
 	
 	function shootTimer(elapsed:Float) 
 	{

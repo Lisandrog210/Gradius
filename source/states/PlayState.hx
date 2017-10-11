@@ -161,8 +161,6 @@ class PlayState extends FlxState
 			{
 				enemyBombers.members[j].kill();
 			}
-			
-			
 		}
 	}
 
