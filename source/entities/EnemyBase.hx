@@ -9,6 +9,7 @@ import flixel.system.FlxAssets.FlxGraphicAsset;
  */
 class EnemyBase extends FlxSprite 
 {
+	public var shot: EnemyShot;
 
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{

@@ -6,7 +6,7 @@ import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.tweens.FlxTween;
 
 
-class EnemyBomber extends EnemyBase
+class EnemyBomber extends FlxSprite
 {
 
 	public function new(?x:Float=0, ?y:Float=0,?SimpleGraphic:FlxGraphicAsset) 

@@ -5,6 +5,7 @@ import entities.EnemyBase;
 import entities.EnemyBomber;
 import entities.EnemyPlane;
 import entities.EnemyShip;
+import entities.EnemyShot;
 import entities.PlayerShot;
 import entities.Storm;
 import flixel.FlxCamera;
@@ -26,14 +27,18 @@ class PlayState extends FlxState
 	private var background:FlxBackdrop;
 	private var tilemapSea:FlxTilemap;
 	private var tilemapMount:FlxTilemap;
-	private var enemyGroup:FlxTypedGroup<EnemyBase>;
+	private var enemyPlanes:FlxTypedGroup<EnemyPlane>;
+	private var enemyShips:FlxTypedGroup<EnemyShip>;
+	private var enemyBombers:FlxTypedGroup<EnemyBomber>;
 	private var stormGroup:FlxTypedGroup<Storm>;
 
 	override public function create():Void
 	{
 		super.create();
 		
-		enemyGroup = new FlxTypedGroup<EnemyBase>();
+		enemyPlanes = new FlxTypedGroup<EnemyPlane>();
+		enemyShips = new FlxTypedGroup<EnemyShip>();
+		enemyBombers = new FlxTypedGroup<EnemyBomber>();
 		stormGroup = new FlxTypedGroup<Storm>();
 		
 		LevelSetup();
@@ -46,7 +51,9 @@ class PlayState extends FlxState
 		player = new Player(50, 50);
 		player.pixelPerfectPosition = false;
 		add(player);
-		add(enemyGroup);
+		add(enemyPlanes);
+		add(enemyShips);
+		add(enemyBombers);
 		add(stormGroup);
 		
 	}
@@ -105,11 +112,11 @@ class PlayState extends FlxState
 		{
 			case "plane1":
 				var plane1:EnemyPlane = new EnemyPlane(x, y,AssetPaths.england1__png);
-				enemyGroup.add(plane1);
+				enemyPlanes.add(plane1);
 				
 			case "ship1":
 				var ship1:EnemyShip = new EnemyShip(x, y, AssetPaths.ship1__png);
-				enemyGroup.add(ship1);
+				enemyShips.add(ship1);
 				
 			case "storm1":
 				var storm1:Storm = new Storm(x, y, AssetPaths.storm30x69__png);
@@ -117,7 +124,7 @@ class PlayState extends FlxState
 				
 			case "bomber1":
 				var bomber1:EnemyBomber = new EnemyBomber(x, y, AssetPaths.bomber__png);
-				enemyGroup.add(bomber1);
+				enemyBombers.add(bomber1);
 		}
 	}
 
@@ -137,18 +144,31 @@ class PlayState extends FlxState
 		{
 			player.kill();
 		}
-		FlxG.overlap(enemyGroup, player, collideEnemyPlayer);
-		FlxG.overlap(player.Bullets, enemyGroup, collideShotEnemy);
+		FlxG.overlap(enemyPlanes, player, collideEnemyPlayer);
+		FlxG.overlap(enemyShips, player, collideEnemyPlayer);
+		FlxG.overlap(player.Bullets, enemyPlanes, collideShotEnemy);
 		FlxG.overlap(player, stormGroup, collidePlayerStorm);
+		for (i in 0...enemyPlanes.length) 
+		{
+			FlxG.overlap(player, enemyPlanes.members[i].shot, collideEnemBulletPlayer);
+		}
+		for (i in 0...enemyShips.length) 
+		{
+			FlxG.overlap(player, enemyShips.members[i].shot, collideEnemBulletPlayer);
+		}
+		/*for (i in 0...enemyBombers.length) 
+		{
+			FlxG.overlap(player, enemyBombers.members[i].shot, collideEnemBulletPlayer);
+		}*/
 	}
 	
-	function collideShotEnemy(s:PlayerShot, e:EnemyBase) 
+	function collideShotEnemy(s:PlayerShot, e:FlxSprite) 
 	{
 		s.kill();
 		e.kill();
 	}
 	
-	function collideEnemyPlayer(e:EnemyBase, p:Player) 
+	function collideEnemyPlayer(e:FlxSprite, p:Player) 
 	{
 		p.kill();
 		e.kill();
@@ -157,6 +177,12 @@ class PlayState extends FlxState
 	function collidePlayerStorm(p:Player, s:Storm) 
 	{
 		p.kill();
+	}
+	
+	function collideEnemBulletPlayer(p:Player, s:EnemyShot)
+	{
+		p.kill();
+		s.kill();
 	}
 }
 

@@ -43,12 +43,16 @@ class Player extends FlxSprite
 		FlxG.state.add(Bullets);
 	}
 	
-	private function checkBoundaries():Void
+	private function Limites():Void
 	{
 		if (x > camera.scroll.x + FlxG.width - width)
+		{
 			x = camera.scroll.x + FlxG.width - width;
+		}
 		if (x < camera.scroll.x)
+		{
 			x = camera.scroll.x;
+		}
 	}
 
 	
@@ -81,7 +85,7 @@ class Player extends FlxSprite
 		movement();
 		shootTimer(elapsed);
 		shoot();
-		checkBoundaries();
+		Limites();
 	}
   
 	function shootTimer(elapsed:Float) 

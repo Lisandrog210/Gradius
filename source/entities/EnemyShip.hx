@@ -4,8 +4,9 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 
-class EnemyShip extends EnemyBase
+class EnemyShip extends FlxSprite
 {
+	public var shot(get, null): EnemyShot;
 	private var AllowShot: Bool;
 	private var Timer: Float = 0;
 
@@ -39,10 +40,15 @@ class EnemyShip extends EnemyBase
 	{
 		if (AllowShot == true) 
 		{
-			var shot: EnemyShot = new EnemyShot(x, y, AssetPaths.playerBullet__png);
+			shot = new EnemyShot(x, y, AssetPaths.playerBullet__png);
 			shot.velocity.set(0, -20);
 			FlxG.state.add(shot);
 			AllowShot = false;
 		}
+	}
+	
+	function get_shot():EnemyShot 
+	{
+		return shot;
 	}
 }
