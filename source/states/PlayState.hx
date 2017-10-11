@@ -2,6 +2,7 @@ package states;
 
 import AssetPaths;
 import entities.Boss;
+import entities.BossShot;
 import entities.EnemyBase;
 import entities.EnemyBomber;
 import entities.EnemyPlane;
@@ -161,13 +162,19 @@ class PlayState extends FlxState
 			{
 				enemyBombers.members[j].kill();
 			}
+			
+			//player.velocity.x = 0;
 		}
+		
 	}
 
 	function CollisionDetect()
 	{
 
-		FlxG.collide(tilemapSea, player);
+		if (FlxG.collide(tilemapSea, player))
+		{
+			player.kill();
+		}
 
 		if (FlxG.collide(tilemapMount, player))
 		{
@@ -179,7 +186,13 @@ class PlayState extends FlxState
 		FlxG.overlap(player.Bullets, enemyPlanes, collideShotEnemy);
 		FlxG.overlap(player.Bullets, enemyShips, collideShotEnemy);
 		FlxG.overlap(player.Bullets, enemyBombers, collideShotEnemy);
+		FlxG.overlap(player.Bullets, bossgroup, collideBossPlayershot);
 		FlxG.overlap(player, stormGroup, collidePlayerStorm);
+		
+		for (i in 0...bossgroup.length) 
+		{
+			FlxG.overlap(player, bossgroup.members[i].shot, collideBossShotPlayer);
+		}
 		for (i in 0...enemyBombers.length)
 		{
 			FlxG.overlap(player, enemyBombers.members[i].shot, collideEnemBulletPlayer);
@@ -212,5 +225,18 @@ class PlayState extends FlxState
 		p.kill();
 		s.kill();
 	}
+	function collideBossShotPlayer(p:Player, s:BossShot)
+	{
+		p.kill();
+		s.kill();
+	}
+	
+	function collideBossPlayershot(p:PlayerShot, s:Boss)
+	{
+		p.kill();
+		s.kill();
+	}
+	
+	
 }
 

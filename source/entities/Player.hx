@@ -67,7 +67,7 @@ class Player extends FlxSprite
 		animation.play("fly");
 	}
 	
-	function HealthSetup() 
+	public function HealthSetup() 
 	{
 		Totalhealth = new FlxTypedGroup<FlxSprite>();
 		for (i in 1...Lives) 
@@ -88,17 +88,17 @@ class Player extends FlxSprite
 		shootTimer(elapsed);
 		shoot();
 		Limites();
-		livesStop();
+		//livesStop();
 	}
 	
-	function livesStop()
+	/*public function livesStop()
 	{
 	if (FlxG.camera.scroll.x > 5900)
 		for (i in 0...Totalhealth.length) 
 		{
 			Totalhealth.members[i].velocity.x = 0;
 		}
-	}
+	}*/
 	
 	/*function playerStop()
 	{
@@ -137,7 +137,7 @@ class Player extends FlxSprite
 			}
 		}
 	}
-	function movement()
+	public function movement()
 	{
 		velocity.set(Reg.velocidadCamara, 0);
 		
