@@ -37,16 +37,16 @@ class PlayState extends FlxState
 	override public function create():Void
 	{
 		super.create();
-		
+
 		enemyPlanes = new FlxTypedGroup<EnemyPlane>();
 		enemyShips = new FlxTypedGroup<EnemyShip>();
 		enemyBombers = new FlxTypedGroup<EnemyBomber>();
 		stormGroup = new FlxTypedGroup<Storm>();
 		bossgroup = new FlxTypedGroup<Boss>();
-		
+
 		LevelSetup();
 		CameraSetup();
-		
+
 		background = new FlxBackdrop(AssetPaths.wallpaper1__png);
 		add(background);
 		add(tilemapSea);
@@ -59,7 +59,7 @@ class PlayState extends FlxState
 		add(stormGroup);
 		add(bossgroup);
 		add(player);
-		
+
 	}
 
 	function CameraSetup()
@@ -69,6 +69,7 @@ class PlayState extends FlxState
 		pivot.velocity.x = Reg.velocidadCamara;
 		FlxG.camera.follow(pivot);
 		add(pivot);
+
 	}
 
 	public function LevelSetup()
@@ -100,36 +101,36 @@ class PlayState extends FlxState
 		loader.loadEntities(entityCreator, "enemies");
 
 		FlxG.worldBounds.set(0, 0, tilemapMount.width, tilemapMount.height);
-		
+
 	}
 
 	private function entityCreator(entityName:String, entityData:Xml)
 	{
 		var x:Int = Std.parseInt(entityData.get("x"));
 		var y:Int = Std.parseInt(entityData.get("y"));
-		
+
 		switch (entityName)
 		{
 			case "plane1":
 				var plane1:EnemyPlane = new EnemyPlane(x, y,AssetPaths.england1__png);
 				enemyPlanes.add(plane1);
-				
+
 			case "ship1":
 				var ship1:EnemyShip = new EnemyShip(x, y, AssetPaths.ship1__png);
 				enemyShips.add(ship1);
-				
+
 			case "storm1":
 				var storm1:Storm = new Storm(x, y, AssetPaths.storm30x69__png);
 				stormGroup.add(storm1);
-				
+
 			case "bomber1":
 				var bomber1:EnemyBomber = new EnemyBomber(x, y, AssetPaths.bomber__png);
 				enemyBombers.add(bomber1);
-				
+
 			case "boss1":
 				var boss1:Boss = new Boss(x, y, AssetPaths.boss1__png);
 				bossgroup.add(boss1);
-				
+
 		}
 	}
 
@@ -138,11 +139,19 @@ class PlayState extends FlxState
 		super.update(elapsed);
 		CollisionDetect();
 		//camerastop();
+		camerastop2();
 	}
-	
-	function camerastop() 
+
+	function camerastop2()
 	{
-		if (camera.scroll.x == 6500) 
+		if ()
+			pivot.velocity.x = 0;
+
+	}
+
+	function camerastop()
+	{
+		if (FlxG.camera.maxScrollX == 6300)
 		{
 			pivot.velocity.x = 0;
 		}
@@ -150,10 +159,9 @@ class PlayState extends FlxState
 
 	function CollisionDetect()
 	{
-		
-		
+
 		FlxG.collide(tilemapSea, player);
-		
+
 		if (FlxG.collide(tilemapMount, player))
 		{
 			player.kill();
@@ -165,33 +173,33 @@ class PlayState extends FlxState
 		FlxG.overlap(player.Bullets, enemyShips, collideShotEnemy);
 		FlxG.overlap(player.Bullets, enemyBombers, collideShotEnemy);
 		FlxG.overlap(player, stormGroup, collidePlayerStorm);
-		for (i in 0...enemyBombers.length) 
+		for (i in 0...enemyBombers.length)
 		{
 			FlxG.overlap(player, enemyBombers.members[i].shot, collideEnemBulletPlayer);
 		}
-		for (i in 0...enemyShips.length) 
+		for (i in 0...enemyShips.length)
 		{
 			FlxG.overlap(player, enemyShips.members[i].shot, collideEnemBulletPlayer);
 		}
 	}
-	
-	function collideShotEnemy(s:PlayerShot, e:FlxSprite) 
+
+	function collideShotEnemy(s:PlayerShot, e:FlxSprite)
 	{
 		s.kill();
 		e.kill();
 	}
-	
-	function collideEnemyPlayer(e:FlxSprite, p:Player) 
+
+	function collideEnemyPlayer(e:FlxSprite, p:Player)
 	{
 		p.kill();
 		e.kill();
 	}
-	
-	function collidePlayerStorm(p:Player, s:Storm) 
+
+	function collidePlayerStorm(p:Player, s:Storm)
 	{
 		p.kill();
 	}
-	
+
 	function collideEnemBulletPlayer(p:Player, s:EnemyShot)
 	{
 		p.kill();

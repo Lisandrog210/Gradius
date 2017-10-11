@@ -29,7 +29,7 @@ class Boss extends FlxSprite
 	{
 		Timer = Timer + elapsed;
 		
-		if (Timer > 0.5)
+		if (Timer > 1.2)
 		{
 			AllowShot = true;
 			Timer = 0;
