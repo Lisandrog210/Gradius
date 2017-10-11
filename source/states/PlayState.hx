@@ -33,7 +33,9 @@ class PlayState extends FlxState
 	private var enemyBombers:FlxTypedGroup<EnemyBomber>;
 	private var stormGroup:FlxTypedGroup<Storm>;
 	private var bossgroup:FlxTypedGroup<Boss>;
-
+	
+	
+	
 	override public function create():Void
 	{
 		super.create();
@@ -59,10 +61,12 @@ class PlayState extends FlxState
 		add(stormGroup);
 		add(bossgroup);
 		add(player);
+		
+	
 
 	}
 
-	function CameraSetup()
+		function CameraSetup()
 	{
 		pivot = new FlxSprite(FlxG.width / 2, FlxG.height / 2);
 		pivot.makeGraphic(1, 1, 0x00000000);
@@ -137,6 +141,7 @@ class PlayState extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
+		
 		CollisionDetect();
 		camerastop();
 		
@@ -144,9 +149,18 @@ class PlayState extends FlxState
 
 	function camerastop()
 	{
-		if (FlxG.camera.maxScrollX == 6300)
+		if (FlxG.camera.scroll.x > 5800)
 		{
 			pivot.velocity.x = 0;
+			for (i in 0...stormGroup.length) 
+			{
+				stormGroup.members[i].velocity.x = 0;
+				
+			}
+			for (j in 0...enemyBombers.length) 
+			{
+				enemyBombers.members[j].velocity.x = 0;
+			}
 		}
 	}
 
