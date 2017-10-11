@@ -234,6 +234,7 @@ class PlayState extends FlxState
 	{
 		p.kill();
 		s.kill();
+		FlxG.switchState(new VictoryMenu());
 	}
 	
 	

@@ -25,7 +25,7 @@ class Menu extends FlxState
 		Title.setFormat(null, 20, FlxColor.RED);
 		add(Title);
 		
-		Text = new FlxText(70, 100, FlxG.width, "Press 'Space' to continue");
+		Text = new FlxText(70, 100, FlxG.width, "Press 'Space' to play");
 		add(Text);
 		
 		Text2 = new FlxText(20, 150, FlxG.width, "Created by: Lisandro Guevara, Garcia Agustin");

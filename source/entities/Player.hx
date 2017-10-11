@@ -57,6 +57,10 @@ class Player extends FlxSprite
 		{
 			x = camera.scroll.x;
 		}
+		if (y < 1) 
+		{
+			y = 1;
+		}
 	}
 
 	
