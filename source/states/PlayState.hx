@@ -138,7 +138,7 @@ class PlayState extends FlxState
 			player.kill();
 		}
 		FlxG.overlap(enemyGroup, player, collideEnemyPlayer);
-		FlxG.overlap(player.shot, enemyGroup, collideShotEnemy);
+		FlxG.overlap(player.Bullets, enemyGroup, collideShotEnemy);
 		FlxG.overlap(player, stormGroup, collidePlayerStorm);
 	}
 	

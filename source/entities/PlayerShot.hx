@@ -15,7 +15,14 @@ class PlayerShot extends FlxSprite
 		super(X, Y, SimpleGraphic);
 		
 		scale.set(2, 2);
-		updateHitbox();
+		updateHitbox();	
+	}
+	
+	override public function update(elapsed:Float):Void 
+	{
+		super.update(elapsed);
+		
+		
 	}
 	
 }

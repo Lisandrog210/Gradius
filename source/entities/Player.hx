@@ -8,7 +8,9 @@ import flixel.FlxG;
 
 class Player extends FlxSprite
 {
-	public var shot(get, null): PlayerShot;
+	private var shot: PlayerShot;
+	public var Bullets(get, null): FlxTypedGroup<PlayerShot>;
+	private var selectedShot: Int = 0;
 	private var Timer: Float = 0;
 	private var AllowShot: Bool;
 	private var Lives:Int = 4;
@@ -19,13 +21,26 @@ class Player extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		scale.set(1, 1);
-		shot = new PlayerShot(x + 15, y + 10, AssetPaths.playerBullet__png);
-		shot.kill();
-		FlxG.state.add(shot);
 		updateHitbox();
 		AnimationSetup();
 		HealthSetup();
+		BulletsSetup();
 		
+	}
+	
+	function BulletsSetup() 
+	{
+		Bullets = new FlxTypedGroup<PlayerShot>();
+		
+		
+		for (i in 0...5) 
+		{
+			shot = new PlayerShot(x, y, AssetPaths.playerBullet__png);
+			shot.kill();
+			Bullets.add(shot);
+		}
+		
+		FlxG.state.add(Bullets);
 	}
 	
 	/*public function edges() 
@@ -93,16 +108,22 @@ class Player extends FlxSprite
 			Timer = 0;
 		}
 	}	
+	
 	function shoot()
 	{
 		if (FlxG.keys.pressed.Z)
 		{
 		if (AllowShot == true)
 			{
-				shot.reset(x + 15, y + 10);
-				shot.velocity.set(Reg.velocidadCamara + 300, 0);
+				Bullets.members[selectedShot].reset(x + 5, y + 5);
+				Bullets.members[selectedShot].velocity.set(Reg.velocidadCamara + 300, 0);
 				AllowShot = false;
-				Timer = 0;
+				selectedShot++;
+				
+				if (selectedShot >= 4) 
+				{
+					selectedShot = 0;
+				}
 			}
 		}
 	}
@@ -153,8 +174,8 @@ class Player extends FlxSprite
 		return KeepAlive;
 	}
 	
-	function get_shot():PlayerShot 
+	function get_Bullets():FlxTypedGroup<PlayerShot> 
 	{
-		return shot;
+		return Bullets;
 	}
 }
