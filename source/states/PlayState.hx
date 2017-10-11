@@ -50,11 +50,11 @@ class PlayState extends FlxState
 		add(tilemapMount);
 		player = new Player(50, 50);
 		player.pixelPerfectPosition = false;
-		add(player);
 		add(enemyPlanes);
 		add(enemyShips);
 		add(enemyBombers);
 		add(stormGroup);
+		add(player);
 		
 	}
 
@@ -150,16 +150,12 @@ class PlayState extends FlxState
 		FlxG.overlap(player, stormGroup, collidePlayerStorm);
 		for (i in 0...enemyPlanes.length) 
 		{
-			FlxG.overlap(player, enemyPlanes.members[i].shot, collideEnemBulletPlayer);
+			FlxG.overlap(player, enemyBombers.members[i].shot, collideEnemBulletPlayer);
 		}
 		for (i in 0...enemyShips.length) 
 		{
 			FlxG.overlap(player, enemyShips.members[i].shot, collideEnemBulletPlayer);
 		}
-		/*for (i in 0...enemyBombers.length) 
-		{
-			FlxG.overlap(player, enemyBombers.members[i].shot, collideEnemBulletPlayer);
-		}*/
 	}
 	
 	function collideShotEnemy(s:PlayerShot, e:FlxSprite) 

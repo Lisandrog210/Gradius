@@ -8,7 +8,7 @@ import flixel.tweens.FlxTween;
 
 class EnemyPlane extends FlxSprite 
 {
-	public var shot(get, null): EnemyShot;
+	
 	private var Timer: Float = 0;
 	private var AllowShot: Bool;
 	
@@ -24,35 +24,6 @@ class EnemyPlane extends FlxSprite
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
-		shootTimer(elapsed);
-		Shoot();
-	}
-	
-	function shootTimer(elapsed:Float) 
-	{
-		Timer = Timer + elapsed;
 		
-		if (Timer > 4)
-		{
-			AllowShot = true;
-			Timer = 0;
-		}
 	}
-	
-	function Shoot() 
-	{
-		if (AllowShot == true) 
-		{
-			shot = new EnemyShot(x, y, AssetPaths.playerBullet__png);
-			shot.velocity.set( -100, 0);
-			FlxG.state.add(shot);
-			AllowShot = false;
-		}
-	}
-	
-	function get_shot():EnemyShot 
-	{
-		return shot;
-	}
-	
 }

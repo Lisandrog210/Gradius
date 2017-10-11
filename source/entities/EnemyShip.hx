@@ -29,7 +29,7 @@ class EnemyShip extends FlxSprite
 	{
 		Timer = Timer + elapsed;
 		
-		if (Timer > 5)
+		if (Timer > 3.5)
 		{
 			AllowShot = true;
 			Timer = 0;
@@ -41,7 +41,7 @@ class EnemyShip extends FlxSprite
 		if (AllowShot == true) 
 		{
 			shot = new EnemyShot(x, y, AssetPaths.playerBullet__png);
-			shot.velocity.set(0, -20);
+			shot.velocity.set(0, -40);
 			FlxG.state.add(shot);
 			AllowShot = false;
 		}
