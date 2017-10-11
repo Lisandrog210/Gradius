@@ -9,6 +9,7 @@ class Boss extends FlxSprite
 	private var Timer: Float = 0;
 	private var AllowShot: Bool = false;
 	public var shot(get, null): EnemyShot;
+	private var initialY: Float;
 
 	public function new(?x:Float=0, ?y:Float=0,?SimpleGraphic:FlxGraphicAsset) 
 	{
@@ -16,6 +17,7 @@ class Boss extends FlxSprite
 		loadGraphic(AssetPaths.boss1__png, true, 63, 35);
 		animation.add("fly", [0, 1, 2, 3, 4, 5], 12, true);
 		animation.play("fly");
+		initialY = y;
 	}
 	
 	override public function update(elapsed:Float):Void 
@@ -23,13 +25,26 @@ class Boss extends FlxSprite
 		super.update(elapsed);
 		shootTimer(elapsed);
 		Shoot();
+		movement();
+	}
+	
+	function movement() 
+	{
+		if (y <= initialY) 
+		{
+			velocity.set(0, 50);
+		}
+		else if (y >= 200) 
+		{
+			velocity.set(0, -50);
+		}
 	}
 	
 	function shootTimer(elapsed:Float) 
 	{
 		Timer = Timer + elapsed;
 		
-		if (Timer > 1.2)
+		if (Timer > 1.5)
 		{
 			AllowShot = true;
 			Timer = 0;

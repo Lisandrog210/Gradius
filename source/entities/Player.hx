@@ -1,9 +1,11 @@
 package entities;
 
 import flixel.FlxSprite;
+import flixel.FlxState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.FlxG;
+import states.DefeatMenu;
 
 
 class Player extends FlxSprite
@@ -151,6 +153,8 @@ class Player extends FlxSprite
 		if (Lives == 0) 
 		{
 			this.destroy();
+			KeepAlive = false;
+			FlxG.switchState(new DefeatMenu());
 		}
 		else 
 		{

@@ -138,15 +138,8 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 		CollisionDetect();
-		//camerastop();
-		camerastop2();
-	}
-
-	function camerastop2()
-	{
-		if ()
-			pivot.velocity.x = 0;
-
+		camerastop();
+		
 	}
 
 	function camerastop()
