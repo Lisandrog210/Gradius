@@ -155,7 +155,7 @@ class Player extends FlxSprite
 		else 
 		{
 			KeepAlive = true;
-			this.reset(x, y - 40);
+			this.reset( camera.scroll.x - width, 100);
 		}
 	}
 	

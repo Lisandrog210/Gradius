@@ -40,7 +40,7 @@ class EnemyShip extends FlxSprite
 	{
 		if (AllowShot == true) 
 		{
-			shot = new EnemyShot(x, y, AssetPaths.playerBullet__png);
+			shot = new EnemyShot(x, y, AssetPaths.Enemybullet__png);
 			shot.velocity.set(0, -40);
 			FlxG.state.add(shot);
 			AllowShot = false;

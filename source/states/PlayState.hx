@@ -146,7 +146,10 @@ class PlayState extends FlxState
 		}
 		FlxG.overlap(enemyPlanes, player, collideEnemyPlayer);
 		FlxG.overlap(enemyShips, player, collideEnemyPlayer);
+		FlxG.overlap(enemyBombers, player, collideEnemyPlayer);
 		FlxG.overlap(player.Bullets, enemyPlanes, collideShotEnemy);
+		FlxG.overlap(player.Bullets, enemyShips, collideShotEnemy);
+		FlxG.overlap(player.Bullets, enemyBombers, collideShotEnemy);
 		FlxG.overlap(player, stormGroup, collidePlayerStorm);
 		for (i in 0...enemyPlanes.length) 
 		{
